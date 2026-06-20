@@ -43,7 +43,7 @@ function initMenu() {
 const basePath = document.body.classList.contains("home-page") ? "./" : "../";
 
 const PRODUCTS = [
-    
+
   {
     name: "Anamay Original",
     price: "$0.75",
