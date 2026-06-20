@@ -46,21 +46,21 @@ const PRODUCTS = [
     price: "$0.75",
     keywords: ["original", "classic", "coconut", "olive", "shea", "soap"],
     url: "../anamay-original/",
-    image: "../images/product-original.jpg"
+    image: "../images/product-original.webp"
   },
   {
     name: "Anamay Turmeric & Honey",
     price: "$1.00",
     keywords: ["turmeric", "honey", "essential oil", "soap"],
     url: "../turmeric-honey/",
-    image: "../images/product-turmeric-honey.jpg"
+    image: "../images/product-turmeric-honey.webp"
   },
   {
     name: "Anamay Jasmine",
     price: "$1.00",
     keywords: ["jasmine", "jasmine oil", "soap"],
     url: "../jasmine/",
-    image: "../images/product-jasmine.jpg"
+    image: "../images/product-jasmine.webp"
   }
 ];
 
