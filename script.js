@@ -71,7 +71,7 @@ const PRODUCTS = [
 // The timeline, total counter, and upcoming month update automatically.
 const TOILET_PROJECTS = [
   {
-    month: "July",
+    month: "June",
     year: 2026,
     toilets: [
       {
@@ -105,7 +105,7 @@ const TOILET_PROJECTS = [
     ]
   },
   {
-    month: "August",
+    month: "July",
     year: 2026,
     toilets: [
       {
