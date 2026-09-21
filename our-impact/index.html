@@ -88,6 +88,39 @@
         </button>
       </div>
     </div>
+
+    <div class="impact-section-divider toilet-impact-section" id="sanitationContribution">
+      <p class="impact-eyebrow">Our Sanitation Contribution</p>
+      <h2>Building Better Sanitation</h2>
+
+      <div class="toilet-impact-intro">
+        <p>
+          Since July 2026, ANAMAY has partnered with Cambodia Community Dream Organization to support the construction of four toilets each month. Each completed toilet represents a practical step toward safer, more dignified sanitation for a family and its community.
+        </p>
+      </div>
+
+      <div class="toilet-impact-summary" aria-live="polite">
+        <strong id="toiletTotalCount">0</strong>
+        <span>Toilets Built</span>
+        <small>and counting since July 2026</small>
+      </div>
+
+      <div class="toilet-timeline-shell">
+        <p class="toilet-timeline-hint">Hover or tap a completed month to see the toilets built during that month.</p>
+        <div class="toilet-timeline" id="toiletTimeline" aria-label="Monthly toilet construction timeline"></div>
+
+        <div class="toilet-month-popover" id="toiletMonthPopover" aria-live="polite" hidden>
+          <div class="toilet-popover-heading">
+            <div>
+              <p class="toilet-popover-kicker" id="toiletPopoverKicker"></p>
+              <h3 id="toiletPopoverTitle"></h3>
+            </div>
+            <button class="toilet-popover-close" id="toiletPopoverClose" type="button" aria-label="Close month details">&times;</button>
+          </div>
+          <div class="toilet-card-grid" id="toiletCardGrid"></div>
+        </div>
+      </div>
+    </div>
   </section>
 </main>
 

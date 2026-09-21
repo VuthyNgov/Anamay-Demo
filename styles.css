@@ -734,6 +734,310 @@ img {
 }
 
 /* =========================
+   TOILET IMPACT TIMELINE
+========================= */
+
+.toilet-impact-section {
+  text-align: center;
+}
+
+.impact-eyebrow {
+  margin: 0 0 14px;
+  color: var(--brand-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.toilet-impact-intro {
+  max-width: var(--text-max);
+  margin: var(--title-text-gap) auto 0;
+}
+
+.toilet-impact-intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--section-text-size);
+  line-height: var(--section-text-line-height);
+}
+
+.toilet-impact-summary {
+  width: min(100%, 390px);
+  margin: 46px auto 52px;
+  padding: 30px 24px 28px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toilet-impact-summary strong {
+  color: var(--brand-blue);
+  font-family: var(--heading-font);
+  font-size: clamp(72px, 8vw, 108px);
+  line-height: 0.8;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.toilet-impact-summary span {
+  margin-top: 15px;
+  color: var(--brand-blue);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.toilet-impact-summary small {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.toilet-timeline-shell {
+  position: relative;
+  width: 100%;
+}
+
+.toilet-timeline-hint {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.toilet-timeline {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(170px, 1fr);
+  align-items: stretch;
+  width: 100%;
+  padding: 6px 0 20px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+
+.toilet-timeline::before {
+  content: "";
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 58px;
+  height: 1px;
+  background: #d8dde3;
+}
+
+.toilet-timeline-node {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  min-height: 108px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 36px 34px auto;
+  justify-items: center;
+  align-items: center;
+}
+
+button.toilet-timeline-node {
+  cursor: pointer;
+}
+
+button.toilet-timeline-node:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.toilet-timeline-month {
+  align-self: end;
+  color: var(--brand-blue);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.toilet-timeline-dot {
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--brand-blue);
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 0 0 7px var(--white);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.toilet-timeline-node.is-complete .toilet-timeline-dot {
+  background: var(--brand-blue);
+}
+
+.toilet-timeline-node.is-active .toilet-timeline-dot,
+button.toilet-timeline-node:hover .toilet-timeline-dot {
+  transform: scale(1.24);
+}
+
+.toilet-timeline-count {
+  align-self: start;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.toilet-timeline-node.is-upcoming .toilet-timeline-month,
+.toilet-timeline-node.is-upcoming .toilet-timeline-count {
+  color: #8c8c8c;
+}
+
+.toilet-timeline-node.is-upcoming .toilet-timeline-dot {
+  border-color: #b9bfc6;
+  background: var(--white);
+}
+
+.toilet-month-popover {
+  width: min(100%, 940px);
+  margin: 22px auto 0;
+  padding: 30px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 24px 64px rgba(5, 51, 99, 0.11);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.toilet-month-popover[hidden] {
+  display: none;
+}
+
+.toilet-month-popover.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toilet-popover-heading {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.toilet-popover-kicker {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.toilet-popover-heading h3 {
+  margin: 0;
+  color: var(--brand-blue);
+  font-family: var(--heading-font);
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 0.95;
+  font-weight: 600;
+}
+
+.toilet-popover-close {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--brand-blue);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.toilet-popover-close:hover {
+  background: var(--soft);
+}
+
+.toilet-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.toilet-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--white);
+}
+
+.toilet-card-image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #f3f4f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.toilet-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.toilet-card-info {
+  min-height: 150px;
+  padding: 19px 20px 20px;
+  background: var(--white);
+}
+
+.toilet-card-info h4 {
+  margin: 0 0 8px;
+  color: var(--brand-blue);
+  font-family: var(--heading-font);
+  font-size: 27px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.toilet-card-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.toilet-card-info .toilet-card-village {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.toilet-card-info small {
+  display: block;
+  margin-top: 12px;
+  color: #777;
+  font-size: 12px;
+}
+
+/* =========================
    PRODUCT DETAIL
 ========================= */
 
@@ -1219,3 +1523,100 @@ img {
     margin-bottom: 34px;
   }
 }
+
+@media (max-width: 700px) {
+  .impact-eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .toilet-impact-intro {
+    margin-top: var(--mobile-title-text-gap);
+  }
+
+  .toilet-impact-intro p {
+    font-size: var(--mobile-section-text-size);
+    line-height: var(--mobile-section-text-line-height);
+  }
+
+  .toilet-impact-summary {
+    margin: 36px auto 42px;
+    padding: 26px 18px 24px;
+  }
+
+  .toilet-impact-summary strong {
+    font-size: clamp(68px, 24vw, 92px);
+  }
+
+  .toilet-timeline-hint {
+    max-width: 300px;
+    margin: 0 auto 18px;
+  }
+
+  .toilet-timeline {
+    grid-auto-columns: minmax(145px, 45vw);
+    margin-inline: -2px;
+    padding-bottom: 16px;
+  }
+
+  .toilet-timeline::before {
+    left: 72px;
+    right: 72px;
+  }
+
+  .toilet-timeline-node {
+    min-height: 106px;
+    padding-inline: 8px;
+  }
+
+  .toilet-timeline-month {
+    font-size: 12px;
+  }
+
+  .toilet-month-popover {
+    margin-top: 16px;
+    padding: 20px 16px 18px;
+    border-radius: 14px;
+  }
+
+  .toilet-popover-heading {
+    margin-bottom: 18px;
+  }
+
+  .toilet-popover-heading h3 {
+    font-size: 38px;
+  }
+
+  .toilet-card-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(248px, 84%);
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    padding: 0 1px 10px;
+    scrollbar-width: thin;
+  }
+
+  .toilet-card {
+    scroll-snap-align: start;
+  }
+
+  .toilet-card-info {
+    min-height: 144px;
+    padding: 17px 18px 18px;
+  }
+
+  .toilet-card-info h4 {
+    font-size: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toilet-timeline-dot,
+  .toilet-month-popover {
+    transition: none;
+  }
+}
+
