@@ -291,31 +291,44 @@ function initToiletTimeline() {
   }
 
   const latestProject = TOILET_PROJECTS[TOILET_PROJECTS.length - 1];
-  const upcoming = latestProject ? getNextMonth(latestProject) : null;
 
   const completedNodes = TOILET_PROJECTS.map((project, index) => `
-    <button
-      class="toilet-timeline-node is-complete"
-      type="button"
-      data-project-index="${index}"
-      aria-expanded="false"
-      aria-controls="toiletMonthPopover"
-    >
-      <span class="toilet-timeline-month">${project.month} ${project.year}</span>
-      <span class="toilet-timeline-dot" aria-hidden="true"></span>
-      <span class="toilet-timeline-count">${project.toilets.length} toilets</span>
-    </button>
-  `).join("");
+  <button
+    class="toilet-timeline-node is-complete"
+    type="button"
+    data-project-index="${index}"
+    aria-expanded="false"
+    aria-controls="toiletMonthPopover"
+  >
+    <span class="toilet-timeline-month">${project.month} ${project.year}</span>
+    <span class="toilet-timeline-dot" aria-hidden="true"></span>
+    <span class="toilet-timeline-count">${project.toilets.length} toilets</span>
+  </button>
+`).join("");
 
-  const upcomingNode = upcoming ? `
-    <div class="toilet-timeline-node is-upcoming" aria-label="${upcoming.month} ${upcoming.year}, upcoming">
-      <span class="toilet-timeline-month">${upcoming.month} ${upcoming.year}</span>
+// Number of upcoming months to display
+  const upcomingMonthCount = 2;
+
+  let upcomingNodes = "";
+  let currentMonth = latestProject;
+
+  for (let i = 0; i < upcomingMonthCount; i++) {
+    if (!currentMonth) break;
+
+    currentMonth = getNextMonth(currentMonth);
+
+    upcomingNodes += `
+    <div class="toilet-timeline-node is-upcoming"
+         aria-label="${currentMonth.month} ${currentMonth.year}, upcoming">
+      <span class="toilet-timeline-month">${currentMonth.month} ${currentMonth.year}</span>
       <span class="toilet-timeline-dot" aria-hidden="true"></span>
       <span class="toilet-timeline-count">Upcoming</span>
     </div>
-  ` : "";
+  `;
+  }
 
-  timeline.innerHTML = completedNodes + upcomingNode;
+  timeline.innerHTML = completedNodes + upcomingNodes;
+
 
   const completedButtons = Array.from(timeline.querySelectorAll(".toilet-timeline-node.is-complete"));
   let activeIndex = null;
