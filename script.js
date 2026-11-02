@@ -290,44 +290,43 @@ function initToiletTimeline() {
     };
   }
 
+
+  // Change this number to show 1, 2, or 3 upcoming months
+  const UPCOMING_MONTHS = 2;
+
   const latestProject = TOILET_PROJECTS[TOILET_PROJECTS.length - 1];
 
   const completedNodes = TOILET_PROJECTS.map((project, index) => `
-  <button
-    class="toilet-timeline-node is-complete"
-    type="button"
-    data-project-index="${index}"
-    aria-expanded="false"
-    aria-controls="toiletMonthPopover"
-  >
-    <span class="toilet-timeline-month">${project.month} ${project.year}</span>
-    <span class="toilet-timeline-dot" aria-hidden="true"></span>
-    <span class="toilet-timeline-count">${project.toilets.length} toilets</span>
-  </button>
-`).join("");
-
-// Number of upcoming months to display
-  const upcomingMonthCount = 2;
+    <button
+      class="toilet-timeline-node is-complete"
+      type="button"
+      data-project-index="${index}"
+      aria-expanded="false"
+      aria-controls="toiletMonthPopover"
+    >
+      <span class="toilet-timeline-month">${project.month} ${project.year}</span>
+      <span class="toilet-timeline-dot" aria-hidden="true"></span>
+      <span class="toilet-timeline-count">${project.toilets.length} toilets</span>
+    </button>
+  `).join("");
 
   let upcomingNodes = "";
-  let currentMonth = latestProject;
+  let nextMonth = latestProject;
 
-  for (let i = 0; i < upcomingMonthCount; i++) {
-    if (!currentMonth) break;
-
-    currentMonth = getNextMonth(currentMonth);
+  for (let i = 0; i < UPCOMING_MONTHS && nextMonth; i++) {
+    nextMonth = getNextMonth(nextMonth);
 
     upcomingNodes += `
-    <div class="toilet-timeline-node is-upcoming"
-         aria-label="${currentMonth.month} ${currentMonth.year}, upcoming">
-      <span class="toilet-timeline-month">${currentMonth.month} ${currentMonth.year}</span>
-      <span class="toilet-timeline-dot" aria-hidden="true"></span>
-      <span class="toilet-timeline-count">Upcoming</span>
-    </div>
-  `;
+      <div class="toilet-timeline-node is-upcoming" aria-label="${nextMonth.month} ${nextMonth.year}, upcoming">
+        <span class="toilet-timeline-month">${nextMonth.month} ${nextMonth.year}</span>
+        <span class="toilet-timeline-dot" aria-hidden="true"></span>
+        <span class="toilet-timeline-count">Upcoming</span>
+      </div>
+    `;
   }
 
   timeline.innerHTML = completedNodes + upcomingNodes;
+
 
 
   const completedButtons = Array.from(timeline.querySelectorAll(".toilet-timeline-node.is-complete"));
